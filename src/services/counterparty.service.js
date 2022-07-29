@@ -16,7 +16,7 @@ const deleteById = (id) => {
     return api.delete("/counterparty/" + id);
 }
 
-const Counterparty = {
+const CounterpartyService = {
     getAll,
     getOne,
     create,
@@ -24,4 +24,4 @@ const Counterparty = {
     deleteById,
 }
 
-export default Counterparty;
+export default CounterpartyService;

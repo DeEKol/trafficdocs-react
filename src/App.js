@@ -1,8 +1,7 @@
-import react, {useEffect, useState} from 'react';
+import { useState} from 'react';
 import { Context } from './context/context';
 import LoginForm from './components/LoginForm'
-import AuthService from './services/auth.service';
-import EventBus from './common/EventBus';
+import Counterparty from './components/Counterparty';
 
 function App() {
   const [showModeratorBoard, setShowModeratorBoard] = useState(false);
@@ -22,7 +21,9 @@ function App() {
         <header className="App-header">
           <LoginForm/>
         </header>
-        Hello world!!!
+        <main>
+          <Counterparty />
+        </main>
       </div>
     </Context.Provider>
   );
