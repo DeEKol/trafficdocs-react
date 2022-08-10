@@ -7,6 +7,13 @@ function App() {
   const [showModeratorBoard, setShowModeratorBoard] = useState(false);
   const [showAdminBoard, setShowAdminBoard] = useState(false);
   const [currentUser, setCurrentUser] = useState(undefined);
+  const [objectForm, setObjectForm] = useState({});
+
+  const [elements, setElements] = useState([]);
+
+  // useEffect(() => {
+
+  // }, currentUser !== undefined);
 
   return (
     <Context.Provider value={{
@@ -15,7 +22,9 @@ function App() {
       showModeratorBoard,
       setShowModeratorBoard,
       showAdminBoard,
-      setShowAdminBoard
+      setShowAdminBoard,
+      elements,
+      setElements,
     }}>
       <div className="App">
         <header className="App-header">

@@ -1,18 +1,8 @@
-import React, { useState } from 'react';
-import CounterpartyService from '../services/counterparty.service';
+import React from 'react';
 
-const CounterpartyList = () => {
-    const [elements, setElements] = useState([]);
-
-    const getAll = async () => {
-        const response = await CounterpartyService.getAll();
-        console.log(response.data);
-
-        setElements(response.data);
-    }
+const CounterpartyList = ({elements, setElements}) => {
     return (
         <div>
-            <button onClick={getAll}>Counterparty</button>
             <ul>
                 {elements.map(e => {
                     return (

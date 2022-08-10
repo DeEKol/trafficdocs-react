@@ -7,15 +7,15 @@ import TripService from '../services/trip.service.js'
 const LoginForm = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const { currentUser, setCurrentUser, showModeratorBoard, setShowModeratorBoard, showAdminBoard, setShowAdminBoard } = useContext(Context);
+    const { elements, setElements, currentUser, setCurrentUser, showModeratorBoard, setShowModeratorBoard, showAdminBoard, setShowAdminBoard } = useContext(Context);
     
     const login = async (username, password) => {
         try { 
             const response = await AuthService.login(username, password);
-            console.log(response);
 
-            console.log(JSON.stringify(response));
             localStorage.setItem("user", JSON.stringify(response))
+
+            setCurrentUser(response);
         } catch (e) {
             console.log(e);
         }
@@ -25,7 +25,10 @@ const LoginForm = () => {
         AuthService.logout();
         setShowModeratorBoard(false);
         setShowAdminBoard(false);
-        setCurrentUser(undefined);
+        console.log(currentUser);
+        setCurrentUser([]);
+        console.log(currentUser);
+        setElements([]);
     }
 
     const getTrips = async () => {
@@ -40,6 +43,7 @@ const LoginForm = () => {
     const getUser = async () => {
         const response = await AuthService.getCurrentUser();
         console.log(response);
+        console.log(currentUser);
     }
 
     const getToken = async () => {
