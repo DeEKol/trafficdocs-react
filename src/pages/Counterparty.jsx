@@ -16,7 +16,7 @@ const Counterparty = () => {
 
     return (
         <div>
-            <CounterpartyForm />
+            <CounterpartyForm elements={elements} setElements={setElements} />
             {
                 error &&
                 <h1>Произошла ошибка ${error}</h1>
@@ -25,7 +25,7 @@ const Counterparty = () => {
                 ?
                 <h1>Загрузка</h1>
                 :
-                <CounterpartyList elements={elements} />
+                <CounterpartyList elements={elements} setElements={setElements} />
             }
         </div>
     )

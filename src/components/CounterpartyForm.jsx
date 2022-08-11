@@ -2,8 +2,8 @@ import React, { useContext, useState } from 'react';
 import { Context } from '../context/context';
 import CounterpartyService from '../services/counterparty.service';
 
-const CounterpartyForm = () => {
-    const { elements, setElements } = useContext(Context);
+const CounterpartyForm = ({ elements, setElements }) => {
+    // const { elements, setElements } = useContext(Context);
 
     const [counterparty, setCounterparty] = useState({
         businessStructure: "",

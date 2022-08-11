@@ -1,6 +1,14 @@
 import React from 'react';
+import CounterpartyService from '../services/counterparty.service';
 
-const CounterpartyList = ({elements, setElements}) => {
+const CounterpartyList = ({ elements, setElements }) => {
+
+    const removeBtn = async (id) => {
+        await CounterpartyService.deleteById(id);
+        
+        setElements(elements.filter(element => element.id !== id));
+    }
+
     return (
         <div>
             <ul>
@@ -30,6 +38,7 @@ const CounterpartyList = ({elements, setElements}) => {
                             house={e.house},
                             appartmentUnit={e.appartmentUnit},
                             appartment={e.appartment}
+                            <button onClick={() => removeBtn(e.id)}>Удалить</button>
                         </li>
                     )
                 })}
