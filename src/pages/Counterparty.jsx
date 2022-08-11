@@ -11,12 +11,22 @@ const Counterparty = () => {
     const [isLoading, error] = useFetching(async () => {
         const response = await CounterpartyService.getAll();
         setElements(response.data);
+        console.log(error);
     })
 
     return (
         <div>
             <CounterpartyForm />
-            <CounterpartyList elements={elements} />
+            {
+                error &&
+                <h1>Произошла ошибка ${error}</h1>
+            }
+            {isLoading
+                ?
+                <h1>Загрузка</h1>
+                :
+                <CounterpartyList elements={elements} />
+            }
         </div>
     )
 }
