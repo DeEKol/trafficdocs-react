@@ -1,19 +1,17 @@
 import { useState} from 'react';
 import { Context } from './context/context';
 import LoginForm from './components/LoginForm'
-import Counterparty from './components/Counterparty';
+import Counterparty from './pages/Counterparty';
+import { BrowserRouter } from 'react-router-dom';
+import Navbar from './components/UI/navbar/Navbar';
+import AppRouter from './components/AppRouter';
 
 function App() {
   const [showModeratorBoard, setShowModeratorBoard] = useState(false);
   const [showAdminBoard, setShowAdminBoard] = useState(false);
   const [currentUser, setCurrentUser] = useState(undefined);
-  const [objectForm, setObjectForm] = useState({});
 
   const [elements, setElements] = useState([]);
-
-  // useEffect(() => {
-
-  // }, currentUser !== undefined);
 
   return (
     <Context.Provider value={{
@@ -26,14 +24,16 @@ function App() {
       elements,
       setElements,
     }}>
-      <div className="App">
         <header className="App-header">
           <LoginForm/>
+          <BrowserRouter>
+            <Navbar />
+            <AppRouter />
+          </BrowserRouter>
         </header>
-        <main>
+        {/* <main>
           <Counterparty />
-        </main>
-      </div>
+        </main> */}
     </Context.Provider>
   );
 }

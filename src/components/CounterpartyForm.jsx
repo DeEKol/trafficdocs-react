@@ -61,25 +61,12 @@ const CounterpartyForm = () => {
         });
     }
 
-    // const change = () => {
-    //     businessStructure: e.target.defaultValue
-    // }
-
     return (
         <form onSubmit={submitHandler}>
-            {/* <input
-                type="text"
-                placeholder="businessStructure"
-                value={counterparty.businessStructure || ''}
-                onChange={e => setCounterparty({ ...counterparty, businessStructure: e.target.value })}
-            /> */}
             <select 
                 name="businessStructure"
-                // value='DEFAULT'
                 defaultValue={'DEFAULT'}
-                // onChange={e => setCounterparty({ ...counterparty, businessStructure: e.target.value == '' ? e.target.defaultValue : e.target.value })}
                 onChange={e => setCounterparty({ ...counterparty, businessStructure: e.target.value })}
-                // onChange={e => console.log(e.target.defaultValue) }
             >
                 <option value="DEFAULT" disabled>структура</option>
                 <option value="ИП">ИП</option>
@@ -110,12 +97,6 @@ const CounterpartyForm = () => {
                 value={counterparty.kpp || ''}
                 onChange={e => setCounterparty({ ...counterparty, kpp: e.target.value })}
             />
-            {/* <input
-                type="text"
-                placeholder="participant"
-                value={counterparty.participant || ''}
-                onChange={e => setCounterparty({ ...counterparty, participant: e.target.value })}
-            /> */}
             <select
                 name="participant"
                 defaultValue={'DEFAULT'}
@@ -125,12 +106,6 @@ const CounterpartyForm = () => {
                 <option value="ЗАКАЗЧИК">ЗАКАЗЧИК</option>
                 <option value="ИСПОЛНИТЕЛЬ">ИСПОЛНИТЕЛЬ</option>
             </select>
-            {/* <input
-                type="text"
-                placeholder="businessStructureBank"
-                value={counterparty.businessStructureBank || ''}
-                onChange={e => setCounterparty({ ...counterparty, businessStructureBank: e.target.value })}
-            /> */}
             <select
                 name="businessStructureBank"
                 defaultValue={'DEFAULT'}
@@ -171,12 +146,6 @@ const CounterpartyForm = () => {
                 value={counterparty.locationIndex || ''}
                 onChange={e => setCounterparty({ ...counterparty, locationIndex: e.target.value })}
             />
-            {/* <input
-                type="text"
-                placeholder="subFederalUnit"
-                value={counterparty.subFederalUnit || ''}
-                onChange={e => setCounterparty({ ...counterparty, subFederalUnit: e.target.value })}
-            /> */}
             <select
                 name="subFederalUnit"
                 defaultValue={'DEFAULT'}
@@ -194,12 +163,6 @@ const CounterpartyForm = () => {
                 value={counterparty.region || ''}
                 onChange={e => setCounterparty({ ...counterparty, region: e.target.value })}
             />
-            {/* <input
-                type="text"
-                placeholder="settlement"
-                value={counterparty.settlement || ''}
-                onChange={e => setCounterparty({ ...counterparty, settlement: e.target.value })}
-            /> */}
             <select
                 name="settlement"
                 defaultValue={'DEFAULT'}
@@ -218,12 +181,6 @@ const CounterpartyForm = () => {
                 value={counterparty.city || ''}
                 onChange={e => setCounterparty({ ...counterparty, city: e.target.value })}
             />
-            {/* <input
-                type="text"
-                placeholder="streetUnit"
-                value={counterparty.streetUnit || ''}
-                onChange={e => setCounterparty({ ...counterparty, streetUnit: e.target.value })}
-            /> */}
             <select
                 name="streetUnit"
                 defaultValue={'DEFAULT'}
@@ -240,12 +197,6 @@ const CounterpartyForm = () => {
                 value={counterparty.street || ''}
                 onChange={e => setCounterparty({ ...counterparty, street: e.target.value })}
             />
-            {/* <input
-                type="text"
-                placeholder="houseUnit"
-                value={counterparty.houseUnit || ''}
-                onChange={e => setCounterparty({ ...counterparty, houseUnit: e.target.value })}
-            /> */}
             <select
                 name="houseUnit"
                 defaultValue={'DEFAULT'}
@@ -261,12 +212,6 @@ const CounterpartyForm = () => {
                 value={counterparty.house || ''}
                 onChange={e => setCounterparty({ ...counterparty, house: e.target.value })}
             />
-            {/* <input
-                type="text"
-                placeholder="appartmentUnit"
-                value={counterparty.appartmentUnit || ''}
-                onChange={e => setCounterparty({ ...counterparty, appartmentUnit: e.target.value })}
-            /> */}
             <select
                 name="appartmentUnit"
                 defaultValue={'DEFAULT'}

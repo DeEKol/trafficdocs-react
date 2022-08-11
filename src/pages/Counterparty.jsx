@@ -2,8 +2,8 @@ import React, { useContext } from 'react';
 import { Context } from '../context/context';
 import { useFetching } from '../hooks/useFetching';
 import CounterpartyService from '../services/counterparty.service';
-import CounterpartyForm from './CounterpartyForm';
-import CounterpartyList from './CounterpartyList';
+import CounterpartyForm from '../components/CounterpartyForm';
+import CounterpartyList from '../components/CounterpartyList';
 
 const Counterparty = () => {
     const { elements, setElements } = useContext(Context);
