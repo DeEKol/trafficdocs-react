@@ -5,7 +5,7 @@ export const useFetching = (callback) => {
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState('');
 
-    const { currentUser, setCurrentUser } = useContext(Context);
+    const { currentUser } = useContext(Context);
 
     useEffect(() => {
         fetch();

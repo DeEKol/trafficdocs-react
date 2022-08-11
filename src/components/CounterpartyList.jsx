@@ -2,8 +2,8 @@ import React, { useContext } from 'react';
 import { Context } from '../context/context';
 import CounterpartyService from '../services/counterparty.service';
 
-const CounterpartyList = ({ elements, setElements, counterparty, setCounterparty }) => {
-    const { objectForm, setObjectForm } = useContext(Context);
+const CounterpartyList = ({ elements, setElements }) => {
+    const { setObjectForm } = useContext(Context);
 
     const removeBtn = async (id) => {
         await CounterpartyService.deleteById(id);

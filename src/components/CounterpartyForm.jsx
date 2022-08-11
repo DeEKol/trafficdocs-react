@@ -1,74 +1,10 @@
-import React, { useContext, useState } from 'react';
-import { useEffect } from 'react';
-import { Context } from '../context/context';
+import React from 'react';
+import { useSubmitForm } from '../hooks/useSubmitForm';
 import CounterpartyService from '../services/counterparty.service';
 
-const CounterpartyForm = ({ elements, setElements, counterparty, setCounterparty }) => {
+const CounterpartyForm = ({ counterparty, setCounterparty }) => {
 
-    const { objectForm, setObjectForm } = useContext(Context);
-
-    useEffect(() => {
-        setCounterparty(objectForm)
-        console.log("useEffect!")
-    }, [objectForm])
-
-    const createElement = (newElement) => {
-        const findIndex = elements.findIndex(item => item.id === newElement.id);
-        if (findIndex === -1) {
-            setElements([...elements, newElement]);
-
-            console.log('not find index:');
-            console.log(elements);
-        } else {
-            elements[findIndex] = newElement;
-            setElements([...elements])
-            console.log('find index: ');
-            console.log(elements);
-        }
-    }
-
-    const submitHandler = async (e) => {
-        e.preventDefault();
-        console.log(counterparty);
-        const newElement = { ...counterparty };
-
-        if (objectForm.id === undefined || objectForm.id !== counterparty.id) {
-            await CounterpartyService.create(newElement).then(response => {
-                console.log(response);
-                createElement(response.data);
-            })
-        } else {
-            await CounterpartyService.updateById(counterparty.id, newElement).then(response => {
-                console.log(response);
-                createElement(response.data);
-            })
-        }
-
-        setCounterparty({
-            id: "",
-            businessStructure: "",
-            name: "",
-            email: "",
-            inn: "",
-            kpp: "",
-            participant: "",
-            businessStructureBank: "",
-            bank: "",
-            accountOfBank: "",
-            account: "",
-            locationIndex: "",
-            subFederalUnit: "",
-            region: "",
-            settlement: "",
-            city: "",
-            streetUnit: "",
-            street: "",
-            houseUnit: "",
-            house: "",
-            appartmentUnit: "",
-            appartment: "",
-        });
-    }
+    const submitHandler = useSubmitForm(counterparty, setCounterparty, CounterpartyService);
 
     const elementForm = (key) => {
         return counterparty.id != '' ? counterparty[key] : 'DEFAULT';

@@ -7,7 +7,7 @@ import TripService from '../services/trip.service.js'
 const LoginForm = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const { elements, setElements, currentUser, setCurrentUser, showModeratorBoard, setShowModeratorBoard, showAdminBoard, setShowAdminBoard } = useContext(Context);
+    const { setElements, currentUser, setCurrentUser, showModeratorBoard, setShowModeratorBoard, showAdminBoard, setShowAdminBoard } = useContext(Context);
     
     const login = async (username, password) => {
         try { 
