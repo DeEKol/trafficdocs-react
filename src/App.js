@@ -12,6 +12,7 @@ function App() {
   const [currentUser, setCurrentUser] = useState(undefined);
 
   const [elements, setElements] = useState([]);
+  const [objectForm, setObjectForm] = useState({});
 
   return (
     <Context.Provider value={{
@@ -23,6 +24,8 @@ function App() {
       setShowAdminBoard,
       elements,
       setElements,
+      objectForm,
+      setObjectForm
     }}>
         <header className="App-header">
           <LoginForm/>
@@ -31,9 +34,6 @@ function App() {
             <AppRouter />
           </BrowserRouter>
         </header>
-        {/* <main>
-          <Counterparty />
-        </main> */}
     </Context.Provider>
   );
 }

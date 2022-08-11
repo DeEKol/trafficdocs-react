@@ -1,12 +1,18 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { Context } from '../context/context';
 import CounterpartyService from '../services/counterparty.service';
 
-const CounterpartyList = ({ elements, setElements }) => {
+const CounterpartyList = ({ elements, setElements, counterparty, setCounterparty }) => {
+    const { objectForm, setObjectForm } = useContext(Context);
 
     const removeBtn = async (id) => {
         await CounterpartyService.deleteById(id);
         
         setElements(elements.filter(element => element.id !== id));
+    }
+
+    const updateBtn = async (e) => {
+        setObjectForm(e);
     }
 
     return (
@@ -39,6 +45,7 @@ const CounterpartyList = ({ elements, setElements }) => {
                             appartmentUnit={e.appartmentUnit},
                             appartment={e.appartment}
                             <button onClick={() => removeBtn(e.id)}>Удалить</button>
+                            <button onClick={() => updateBtn(e)}>Изменить</button>
                         </li>
                     )
                 })}

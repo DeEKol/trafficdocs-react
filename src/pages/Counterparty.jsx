@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Context } from '../context/context';
 import { useFetching } from '../hooks/useFetching';
 import CounterpartyService from '../services/counterparty.service';
@@ -8,6 +8,31 @@ import CounterpartyList from '../components/CounterpartyList';
 const Counterparty = () => {
     const { elements, setElements } = useContext(Context);
 
+    const [counterparty, setCounterparty] = useState({
+        id: "",
+        businessStructure: "",
+        name: "",
+        email: "",
+        inn: "",
+        kpp: "",
+        participant: "",
+        businessStructureBank: "",
+        bank: "",
+        accountOfBank: "",
+        account: "",
+        locationIndex: "",
+        subFederalUnit: "",
+        region: "",
+        settlement: "",
+        city: "",
+        streetUnit: "",
+        street: "",
+        houseUnit: "",
+        house: "",
+        appartmentUnit: "",
+        appartment: "",
+    });
+
     const [isLoading, error] = useFetching(async () => {
         const response = await CounterpartyService.getAll();
         setElements(response.data);
@@ -16,7 +41,12 @@ const Counterparty = () => {
 
     return (
         <div>
-            <CounterpartyForm elements={elements} setElements={setElements} />
+            <CounterpartyForm
+                elements={elements}
+                setElements={setElements}
+                counterparty={counterparty}
+                setCounterparty={setCounterparty}
+            />
             {
                 error &&
                 <h1>Произошла ошибка ${error}</h1>
@@ -25,7 +55,12 @@ const Counterparty = () => {
                 ?
                 <h1>Загрузка</h1>
                 :
-                <CounterpartyList elements={elements} setElements={setElements} />
+                <CounterpartyList
+                    elements={elements}
+                    setElements={setElements}
+                    counterparty={counterparty}
+                    setCounterparty={setCounterparty}
+                />
             }
         </div>
     )

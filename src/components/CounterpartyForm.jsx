@@ -1,42 +1,51 @@
 import React, { useContext, useState } from 'react';
+import { useEffect } from 'react';
 import { Context } from '../context/context';
 import CounterpartyService from '../services/counterparty.service';
 
-const CounterpartyForm = ({ elements, setElements }) => {
-    // const { elements, setElements } = useContext(Context);
+const CounterpartyForm = ({ elements, setElements, counterparty, setCounterparty }) => {
 
-    const [counterparty, setCounterparty] = useState({
-        businessStructure: "",
-        name: "",
-        email: "",
-        inn: "",
-        kpp: "",
-        participant: "",
-        businessStructureBank: "",
-        bank: "",
-        accountOfBank: "",
-        account: "",
-        locationIndex: "",
-        subFederalUnit: "",
-        region: "",
-        settlement: "",
-        city: "",
-        streetUnit: "",
-        street: "",
-        houseUnit: "",
-        house: "",
-        appartmentUnit: "",
-        appartment: "",
-    });
+    const { objectForm, setObjectForm } = useContext(Context);
+
+    useEffect(() => {
+        setCounterparty(objectForm)
+        console.log("useEffect!")
+    }, [objectForm])
+
+    const createElement = (newElement) => {
+        const findIndex = elements.findIndex(item => item.id === newElement.id);
+        if (findIndex === -1) {
+            setElements([...elements, newElement]);
+
+            console.log('not find index:');
+            console.log(elements);
+        } else {
+            elements[findIndex] = newElement;
+            setElements([...elements])
+            console.log('find index: ');
+            console.log(elements);
+        }
+    }
 
     const submitHandler = async (e) => {
         e.preventDefault();
+        console.log(counterparty);
         const newElement = { ...counterparty };
-        console.log(newElement);
-        await CounterpartyService.create(newElement);
-        setElements([...elements, newElement]);
+
+        if (objectForm.id === undefined || objectForm.id !== counterparty.id) {
+            await CounterpartyService.create(newElement).then(response => {
+                console.log(response);
+                createElement(response.data);
+            })
+        } else {
+            await CounterpartyService.updateById(counterparty.id, newElement).then(response => {
+                console.log(response);
+                createElement(response.data);
+            })
+        }
 
         setCounterparty({
+            id: "",
             businessStructure: "",
             name: "",
             email: "",
@@ -61,12 +70,21 @@ const CounterpartyForm = ({ elements, setElements }) => {
         });
     }
 
+    const elementForm = (key) => {
+        return counterparty.id != '' ? counterparty[key] : 'DEFAULT';
+    }
+
     return (
         <form onSubmit={submitHandler}>
             <select 
                 name="businessStructure"
-                defaultValue={'DEFAULT'}
-                onChange={e => setCounterparty({ ...counterparty, businessStructure: e.target.value })}
+                value={elementForm("businessStructure")}
+                onChange={e => {
+                    setCounterparty({ ...counterparty, businessStructure: e.target.value })
+                    console.log("onChange businessStructure")
+                    console.log(counterparty);
+                }
+            }
             >
                 <option value="DEFAULT" disabled>структура</option>
                 <option value="ИП">ИП</option>
@@ -99,7 +117,7 @@ const CounterpartyForm = ({ elements, setElements }) => {
             />
             <select
                 name="participant"
-                defaultValue={'DEFAULT'}
+                value={elementForm("participant")}
                 onChange={e => setCounterparty({ ...counterparty, participant: e.target.value })}
             >
                 <option value="DEFAULT" disabled>участник</option>
@@ -108,7 +126,7 @@ const CounterpartyForm = ({ elements, setElements }) => {
             </select>
             <select
                 name="businessStructureBank"
-                defaultValue={'DEFAULT'}
+                value={elementForm("businessStructureBank")}
                 onChange={e => setCounterparty({ ...counterparty, businessStructureBank: e.target.value })}
             >
                 <option value="DEFAULT" disabled>структура банка</option>
@@ -148,7 +166,7 @@ const CounterpartyForm = ({ elements, setElements }) => {
             />
             <select
                 name="subFederalUnit"
-                defaultValue={'DEFAULT'}
+                value={elementForm("subFederalUnit")}
                 onChange={e => setCounterparty({ ...counterparty, subFederalUnit: e.target.value })}
             >
                 <option value="DEFAULT" disabled>субъект</option>
@@ -165,7 +183,7 @@ const CounterpartyForm = ({ elements, setElements }) => {
             />
             <select
                 name="settlement"
-                defaultValue={'DEFAULT'}
+                value={elementForm("settlement")}
                 onChange={e => setCounterparty({ ...counterparty, settlement: e.target.value })}
             >
                 <option value="DEFAULT" disabled>поселение</option>
@@ -183,7 +201,7 @@ const CounterpartyForm = ({ elements, setElements }) => {
             />
             <select
                 name="streetUnit"
-                defaultValue={'DEFAULT'}
+                value={elementForm("streetUnit")}
                 onChange={e => setCounterparty({ ...counterparty, streetUnit: e.target.value })}
             >
                 <option value="DEFAULT" disabled>проезд</option>
@@ -199,7 +217,7 @@ const CounterpartyForm = ({ elements, setElements }) => {
             />
             <select
                 name="houseUnit"
-                defaultValue={'DEFAULT'}
+                value={elementForm("houseUnit")}
                 onChange={e => setCounterparty({ ...counterparty, houseUnit: e.target.value })}
             >
                 <option value="DEFAULT" disabled>здание</option>
@@ -214,7 +232,7 @@ const CounterpartyForm = ({ elements, setElements }) => {
             />
             <select
                 name="appartmentUnit"
-                defaultValue={'DEFAULT'}
+                value={elementForm("appartmentUnit")}
                 onChange={e => setCounterparty({ ...counterparty, appartmentUnit: e.target.value })}
             >
                 <option value="DEFAULT" disabled>апартамент</option>
@@ -228,7 +246,7 @@ const CounterpartyForm = ({ elements, setElements }) => {
                 onChange={e => setCounterparty({ ...counterparty, appartment: e.target.value })}
             />
 
-            <button type="submit">add Counterparty</button>
+            <button type="submit">{counterparty.id ? `Update Counterparty id:${counterparty.id}` : 'Add Counterparty'}</button>
         </form>
     )
 }
