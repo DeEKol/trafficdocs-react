@@ -35,8 +35,8 @@ const CounterpartyList = ({ elements, setElements }) => {
               house={e.house},
               appartmentUnit={e.appartmentUnit},
               appartment={e.appartment}
-              <button onClick={() => Button.removeBtn(e.id, elements, setElements)}>Удалить</button>
               
+              <button onClick={() => Button.removeBtn(e.id, elements, setElements, CounterpartyService)}>Удалить</button>
               <button onClick={() => Button.updateBtn(e, setObjectForm)}>Изменить</button>
           </li>
         )})}

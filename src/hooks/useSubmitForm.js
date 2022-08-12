@@ -20,7 +20,7 @@ export const useSubmitForm = (element, setElement, service) => {
       setElements([...elements, newElement]);
     } else {
       elements[findIndex] = newElement;
-      setElements([...elements])
+      setElements([...elements]);
     }
   }
 
