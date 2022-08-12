@@ -26,13 +26,13 @@ function App() {
       objectForm,
       setObjectForm
     }}>
-        <header className="App-header">
-          <LoginForm/>
-          <BrowserRouter>
-            <Navbar />
-            <AppRouter />
-          </BrowserRouter>
-        </header>
+      <header className="App-header">
+        <LoginForm/>
+        <BrowserRouter>
+          <Navbar />
+          <AppRouter />
+        </BrowserRouter>
+      </header>
     </Context.Provider>
   );
 }

@@ -1,11 +1,11 @@
 import api from "./api";
 
 const getAll = () => {
-    return api.get("/trip");
+  return api.get("/trip");
 }
 
 const TripService = {
-    getAll,
+  getAll,
 }
 
 export default TripService;
