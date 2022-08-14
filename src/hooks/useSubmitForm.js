@@ -11,7 +11,8 @@ export const useSubmitForm = (element, setElement, service) => {
   const { objectForm, elements, setElements } = useContext(Context);
 
   useEffect(() => {
-    setElement(objectForm)
+    setElement(objectForm);
+    console.log(objectForm);
   }, [objectForm])
 
   const createElement = (newElement) => {
@@ -27,6 +28,7 @@ export const useSubmitForm = (element, setElement, service) => {
   const submitHandler = async (e) => {
     e.preventDefault();
     const newElement = { ...element };
+    console.log(newElement);
 
     if (objectForm.id === undefined || objectForm.id !== element.id) {
       await service.create(newElement).then(response => {
