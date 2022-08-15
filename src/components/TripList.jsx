@@ -19,7 +19,8 @@ const TripList = ({ elements, setElements }) => {
               quantityUnit={e.quantityUnit},
               price={e.price},
               consumer={e.consumer},
-              contractor={e.contractor}
+              contractor={e.contractor},
+              docsId={e.docsId}
 
               <button onClick={() => Button.removeBtn(e.id, elements, setElements, TripService)}>Удалить</button>
               <button onClick={() => Button.updateBtn(e, setObjectForm)}>Изменить</button>

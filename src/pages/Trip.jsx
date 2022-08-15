@@ -17,6 +17,7 @@ const Trip = () => {
     price: "",
     consumer: "",
     contractor: "",
+    docsId: "",
   });
 
   const [isLoading, error] = useFetching(async () => {

@@ -12,7 +12,6 @@ export const useSubmitForm = (element, setElement, service) => {
 
   useEffect(() => {
     setElement(objectForm);
-    console.log(objectForm);
   }, [objectForm])
 
   const createElement = (newElement) => {

@@ -56,6 +56,12 @@ const TripForm = ({ trip, setTrip }) => {
         value={trip.contractor || ''}
         onChange={e => setTrip({ ...trip, contractor: e.target.value })}
       />
+      <input
+        type="text"
+        placeholder="docsId"
+        value={trip.docsId || ''}
+        onChange={e => setTrip({ ...trip, docsId: e.target.value })}
+      />
 
       <button type="submit">{trip.id ? `Update Trip id:${trip.id}` : 'Add Trip'}</button>
     </form>

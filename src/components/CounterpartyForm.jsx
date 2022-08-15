@@ -23,6 +23,7 @@ const CounterpartyForm = ({ counterparty, setCounterparty }) => {
         <option value="ИП">ИП</option>
         <option value="ООО">ООО</option>
         <option value="АО">АО</option>
+        <option value="ЗАО">ЗАО</option>
       </select>
       <input
         type="text"
@@ -66,6 +67,7 @@ const CounterpartyForm = ({ counterparty, setCounterparty }) => {
         <option value="ИП">ИП</option>
         <option value="ООО">ООО</option>
         <option value="АО">АО</option>
+        <option value="ЗАО">ЗАО</option>
       </select>
       <input
         type="text"

@@ -36,7 +36,6 @@ const Counterparty = () => {
   const [isLoading, error] = useFetching(async () => {
     const response = await CounterpartyService.getAll();
     setElements(response.data);
-    console.log(error);
   })
 
   return (
