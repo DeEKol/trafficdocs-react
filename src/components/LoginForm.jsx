@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { Context } from '../context/context';
 import AuthService from '../services/auth.service';
+import CreateService from '../services/create.service';
 import TokenService from '../services/token.service';
 import TripService from '../services/trip.service.js'
 
@@ -51,6 +52,11 @@ const LoginForm = () => {
     console.log(response);
   }
 
+  const createDocsXls = async () => {
+    const response = await CreateService.docsXls();
+    console.log(response);
+  }
+
   return (
     <div>
       <input
@@ -71,6 +77,7 @@ const LoginForm = () => {
       <button onClick={() => getUser()}>Юзер</button>
       <button onClick={() => getTrips()}>Trips</button>
       <button onClick={() => getToken()}>token</button>
+      <button onClick={() => createDocsXls()}>create docs.xls</button>
     </div>
   )
 }
