@@ -1,7 +1,7 @@
 import api from "./api";
 
-const docsXls = () => {
-  return api.get("/create/docs.xls");
+const docsXls = (id) => {
+  return api.get("/create/docs.xls/" + id);
 }
 
 const CreateService = {
