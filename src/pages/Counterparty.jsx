@@ -40,6 +40,7 @@ const Counterparty = () => {
 
   return (
     <div>
+      <h2>Контрагенты</h2>
       <CounterpartyForm
         elements={elements}
         setElements={setElements}

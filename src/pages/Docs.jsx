@@ -24,6 +24,7 @@ const Docs = () => {
 
   return (
     <div>
+      <h2>Документы</h2>
       <DocsForm
         elements={elements}
         setElements={setElements}

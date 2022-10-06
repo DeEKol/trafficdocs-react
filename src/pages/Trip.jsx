@@ -27,6 +27,7 @@ const Trip = () => {
 
   return (
     <div>
+      <h2>Рейсы</h2>
       <TripForm
         elements={elements}
         setElements={setElements}

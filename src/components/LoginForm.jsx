@@ -32,30 +32,30 @@ const LoginForm = () => {
     setElements([]);
   }
 
-  const getTrips = async () => {
-    try {
-      const response = await TripService.getAll();
-      console.log(response.data);
-    } catch(e) {
-      console.log(e);
-    }
-  }
+  // const getTrips = async () => {
+  //   try {
+  //     const response = await TripService.getAll();
+  //     console.log(response.data);
+  //   } catch(e) {
+  //     console.log(e);
+  //   }
+  // }
 
-  const getUser = async () => {
-    const response = await AuthService.getCurrentUser();
-    console.log(response);
-    console.log(currentUser);
-  }
+  // const getUser = async () => {
+  //   const response = await AuthService.getCurrentUser();
+  //   console.log(response);
+  //   console.log(currentUser);
+  // }
 
-  const getToken = async () => {
-    const response = await TokenService.getLocalAccessToken();
-    console.log(response);
-  }
+  // const getToken = async () => {
+  //   const response = await TokenService.getLocalAccessToken();
+  //   console.log(response);
+  // }
 
-  const createDocsXls = async () => {
-    const response = await CreateService.docsXls();
-    console.log(response);
-  }
+  // const createDocsXls = async () => {
+  //   const response = await CreateService.docsXls();
+  //   console.log(response);
+  // }
 
   return (
     <div>
@@ -74,10 +74,10 @@ const LoginForm = () => {
 
       <button onClick={() => login(username, password)}>Логин</button>
       <button onClick={() => logOut()}>Выйти</button>
-      <button onClick={() => getUser()}>Юзер</button>
+      {/* <button onClick={() => getUser()}>Юзер</button>
       <button onClick={() => getTrips()}>Trips</button>
       <button onClick={() => getToken()}>token</button>
-      <button onClick={() => createDocsXls()}>create docs.xls</button>
+      <button onClick={() => createDocsXls()}>create docs.xls</button> */}
     </div>
   )
 }

@@ -8,7 +8,8 @@ const DocsList = ({ elements, setElements }) => {
   const { setObjectForm } = useContext(Context);
 
   const createDocsXls = async (id) => {
-    await CreateService.docsXls(id);
+    const response = await CreateService.docsXls(id);
+    console.log(response);
   }
 
   return (
